@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "sign_up" => "registration#new"
 
   post "sign_up" => "registration#create"
+
+  delete "logout" => "sessions#destroy"
   
   root to: "main#index"
   
