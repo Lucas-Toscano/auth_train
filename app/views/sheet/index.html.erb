@@ -1,0 +1,79 @@
+<div class="d-flex align-items-center justify-content-center mt-5">
+    <h1>Create your sheet!</h1>
+</div>
+
+<%= form_with do |form| %>
+
+<div class="mb-3 mt-3">
+    <h2>Who are you?</h2>
+    <%= form.text_field :name, placeholder: "Character name" %>
+
+<div class="mb-3 mt-3">
+    <h3>What is your lineage?</h3>
+    <%= form.text_field :race, placeholder: "Character race" %>
+</div>
+
+<div class="mb-3 mt-3">
+    <h3>Character Level</h3>
+    <%= form.number_field :level, placeholder: "Character Level", value: 1, min: 1, max: 20 %>
+</div>
+
+<div class="mb-3 mt-3">
+    <h3>Proficiency Bonus</h3>
+    <%= "+#{@proficiency_bonus}" %>
+</div>
+
+<h3>Attributes</h3>
+
+<div class="mb-3">
+    <%= form.label :strength %>
+    <%= form.number_field :strength, placeholder: "Value", min: 8, max: 18, value: @strength %>
+    <%= "Modifier: #{@mod_strength}" %>
+</div>
+
+<div class="mb-3">
+    <%= form.label :dexterity %>
+    <%= form.number_field :dexterity, placeholder: "Dexterity", value: @dexterity, min: 8, max: 18 %>
+    <%= "Modifier: #{@mod_dexterity}" %>
+</div>
+
+
+<div class="mb-3">
+    <%= form.label :constitution %>
+    <%= form.number_field :constitution, placeholder: "Constitution", value: @constitution, min: 8, max: 18 %>
+    <%= "Modifier: #{@mod_constitution}" %>
+</div>
+
+<div class="mb-3">
+    <%= form.label :intelligence %>
+    <%= form.number_field :intelligence, placeholder: "Intelligence", value: @intelligence, min: 8, max: 18 %>
+    <%= "Modifier: #{@mod_intelligence}" %>
+</div>
+
+<div class="mb-3">
+    <%= form.label :wisdom %>
+    <%= form.number_field :wisdom, placeholder: "Wisdom", value: @wisdom, min: 8, max: 18 %>
+    <%= "Modifier: #{@mod_wisdom}" %>
+</div>
+
+<div class="mb-3">
+    <%= form.label :charisma %>
+    <%= form.number_field :charisma, placeholder: "Charisma", value: @charisma, min: 8, max: 18 %>
+    <%= "Modifier: #{@mod_charisma}" %>
+</div>
+
+<div class="mb-5 mt-5">
+    <h3>Skills</h3>
+    <%= check_box_tag(:athletics) %>
+    <%= label_tag(:athletics, "Athletics")%>
+    <%= @athletics %><br>
+    <%= check_box_tag(:acrobatics) %>
+    <%= label_tag(:acrobatics, "Acrobatics")%>
+    <%= @acrobatics %>
+</div>
+
+<div class="mb-3">
+    <%= form.submit "Create sheet", class: "btn btn-primary" %>
+</div>
+
+<% end %>
