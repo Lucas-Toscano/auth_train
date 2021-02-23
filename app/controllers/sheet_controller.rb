@@ -1,14 +1,23 @@
 class SheetController < ApplicationController
-    before_action :require_user_logged_in!
-
+    # before_action :require_user_logged_in!
     def index
+
+        # NAME
+
+        @name = params[:name]
+
+        # RACES
+        @race = params[:race]
+
+
+
         #  LEVEL
 
-        @levels = (1..20).to_a
+        @level = params[:level]
 
         # PROFICIENCY
 
-        @proficiency_bonus = 1 + (params[:level].to_f / 4).ceil || 2
+        @proficiency_bonus = 1 + (@level.to_f / 4).ceil || 2
 
         # ATTRIBUTES
 
@@ -35,5 +44,23 @@ class SheetController < ApplicationController
         @athletics = @mod_strength + @proficiency_bonus
         @acrobatics = @mod_dexterity + @proficiency_bonus
         
+    end
+
+    def new
+        @sheet = Sheet.new
+    end
+
+    def create 
+        @sheet = Sheet.create(sheet_params)
+        if @sheet.save
+            session[:sheet_id] = @sheet.id
+            redirect_to sheets_path, notice: "Successfuly created your Character Sheet!"
+        else
+            render :new
+        end
+    end
+
+    def sheet_params
+        params.require(:sheet).permit(:name, :race, :level, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma)
     end
 end

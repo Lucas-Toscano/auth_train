@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
   # get "about-us", to: "about#index", as: :about
   
   # SHEET PAGE
   get "sheet" => "sheet#index"
   post "sheet" => "sheet#index"
+
+  get "sheets" => "sheets#all"
 
   # RACES PAGE
   get "races" => "races#all"

@@ -2,20 +2,22 @@
     <h1>Create your sheet!</h1>
 </div>
 
-<%= form_with do |form| %>
+<%= form_with model: @sheet, url: sheet_path do |form| %>
 
 <div class="mb-3 mt-3">
     <h2>Who are you?</h2>
     <%= form.text_field :name, placeholder: "Character name" %>
+    <%= @name %>
+</div>
 
 <div class="mb-3 mt-3">
     <h3>What is your lineage?</h3>
-    <%= form.text_field :race, placeholder: "Character race" %>
+    <%= form.select :race, options_for_select(["Angelo", "Ice Dwarf", "Oracle", " Mermaid", "Human", "Titan"], @race) %>
 </div>
 
 <div class="mb-3 mt-3">
     <h3>Character Level</h3>
-    <%= form.number_field :level, placeholder: "Character Level", value: 1, min: 1, max: 20 %>
+    <%= form.select :level, options_for_select(1..20, @level) %>
 </div>
 
 <div class="mb-3 mt-3">
@@ -27,38 +29,38 @@
 
 <div class="mb-3">
     <%= form.label :strength %>
-    <%= form.number_field :strength, placeholder: "Value", min: 8, max: 18, value: @strength %>
+    <%= form.select :strength, options_for_select(8..18, @strength) %>
     <%= "Modifier: #{@mod_strength}" %>
 </div>
 
 <div class="mb-3">
     <%= form.label :dexterity %>
-    <%= form.number_field :dexterity, placeholder: "Dexterity", value: @dexterity, min: 8, max: 18 %>
+    <%= form.select :dexterity, options_for_select(8..18, @dexterity) %>
     <%= "Modifier: #{@mod_dexterity}" %>
 </div>
 
 
 <div class="mb-3">
     <%= form.label :constitution %>
-    <%= form.number_field :constitution, placeholder: "Constitution", value: @constitution, min: 8, max: 18 %>
+    <%= form.select :constitution, options_for_select(8..18, @constitution) %>
     <%= "Modifier: #{@mod_constitution}" %>
 </div>
 
 <div class="mb-3">
     <%= form.label :intelligence %>
-    <%= form.number_field :intelligence, placeholder: "Intelligence", value: @intelligence, min: 8, max: 18 %>
+    <%= form.select :intelligence, options_for_select(8..18, @intelligence) %>
     <%= "Modifier: #{@mod_intelligence}" %>
 </div>
 
 <div class="mb-3">
     <%= form.label :wisdom %>
-    <%= form.number_field :wisdom, placeholder: "Wisdom", value: @wisdom, min: 8, max: 18 %>
+    <%= form.select :wisdom, options_for_select(8..18, @wisdom) %>
     <%= "Modifier: #{@mod_wisdom}" %>
 </div>
 
 <div class="mb-3">
     <%= form.label :charisma %>
-    <%= form.number_field :charisma, placeholder: "Charisma", value: @charisma, min: 8, max: 18 %>
+    <%= form.select :charisma, options_for_select(8..18, @charisma) %>
     <%= "Modifier: #{@mod_charisma}" %>
 </div>
 
